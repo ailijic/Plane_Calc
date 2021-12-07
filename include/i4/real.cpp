@@ -1,7 +1,7 @@
 // #include <math.h>
 // #include <stddef.h>
 
-#include <i4/mem.h>
+#include "i4/mem.h"
 // #include "i4/type.h"
 // #include "i4/math.h"
 #include "i4/real.h"
@@ -87,12 +87,12 @@ static Real emp(void)
 
 bool REAL(isEqual)(Real const* a_lhs, Real const* a_rhs)
 {
-  Real absTol, relTol, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7, tmp8, tmp9, tmp10;
+  Real tmp[10], absTol, relTol;
   init(&absTol, CAST(real, DBL_EPSILON));
   init(&relTol,
-      CAST(real, DBL_EPSILON) * max(&tmp10, absValue(&tmp8, a_lhs), absValue(&tmp9, a_rhs))->t);
+      CAST(real, DBL_EPSILON) * max(&tmp[0], absValue(&tmp[1], a_lhs), absValue(&tmp[2], a_rhs))->t);
 
-  return absValue(&tmp6, sub(&tmp5, a_lhs, a_rhs))->t <= max(&tmp4, &absTol,
-             mul(&tmp3, &relTol, max(&tmp7, absValue(&tmp2, a_lhs), absValue(&tmp1, a_rhs))))
-                                                             ->t;
+  return absValue(&tmp[3], sub(&tmp[4], a_lhs, a_rhs))->t <= max(&tmp[5], &absTol,
+             mul(&tmp[6], &relTol, max(&tmp[7], absValue(&tmp[8], a_lhs), absValue(&tmp[9], a_rhs))))
+                                                                 ->t;
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+// TODO: Make pure again
+
 #include "i4/i4.h"
 
 #ifdef __cplusplus

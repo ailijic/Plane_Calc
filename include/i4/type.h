@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-typedef double real;
+typedef float real;
 typedef int_fast16_t num;
 
 typedef intptr_t IntPtr;

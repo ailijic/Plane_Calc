@@ -1,2 +1,2 @@
 language = "bash"
-run = "make run"
+run = "clear && make"
