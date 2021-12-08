@@ -1,98 +1,92 @@
-// #include <math.h>
-// #include <stddef.h>
-
 #include "i4/mem.h"
-// #include "i4/type.h"
-// #include "i4/math.h"
 #include "i4/real.h"
+#include <stdbool.h>
 
-Real* REAL(ctor)(Real const* a_this) {
-	return CAST(Real*, ctor(NULL, ssizeof(*a_this)));
+Real* REAL(ctor)(Real* a_this)
+{
+  return CAST(Real*, ctor(NULL, ssizeof(*a_this)));
 }
 
 void REAL(dtor)(Real* a_this) { dtor(CAST(void*, a_this)); }
 
-Real* REAL(init)(Real* a_this, real a_value) {
+Real* REAL(init)(Real* a_this, real a_value)
+{
   a_this->t = a_value;
   return a_this;
 }
 
-real REAL(convert)(Real* a_this) { return a_this->t; }
+real REAL(convert)(Real a_this) { return a_this.t; }
 
-Real* REAL(e)(Real* a_out, Real const* a_value) {  // e^a_value
-  a_out->t = e(a_value->t);
-	return a_out;
+Real REAL(e)(Real a_value)
+{ // e^a_value
+  Real ret = { .t = e(a_value->t) };
+  return ret;
 }
 
-Real* REAL(add)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(add)(Real a_lhs, Real a_rhs)
 {
-  a_out->t = a_lhs->t + a_rhs->t;
-  return a_out;
+  Real ret = { .t = a_lhs->t + a_rhs->t };
+  return ret;
 }
 
-Real* REAL(sub)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(sub)(Real a_lhs, Real a_rhs)
 {
-  a_out->t = a_lhs->t - a_rhs->t;
-  return a_out;
+  Real ret = { .t = a_lhs->t - a_rhs->t };
+  return ret;
 }
 
-Real* REAL(mul)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(mul)(Real a_lhs, Real a_rhs)
 {
-  a_out->t = a_lhs->t * a_rhs->t;
-  return a_out;
+  Real ret = { .t = a_lhs->t * a_rhs->t };
+  return ret;
 }
 
-Real* REAL(div)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(div)(Real a_lhs, Real a_rhs)
 {
-  a_out->t = a_lhs->t / a_rhs->t;
-  return a_out;
+  Real ret = { .t = a_lhs->t / a_rhs->t };
+  return ret;
 }
 
-Real* REAL(absValue)(Real* a_out, Real const* a_value)
+Real REAL(absValue)(Real a_value)
 {
-  a_out->t = absValue(a_value->t);
-  return a_out;
+  Real ret = { .t = absValue(a_value->t) };
+  return ret;
 }
 
-Real* REAL(max)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(max)(Real a_lhs, Real a_rhs)
 {
   // TODO: Which of these is faster?
   // return (isgreater(a_lhs.t, a_rhs.t)) ? (Real){a_lhs.t}
   //                                      : (Real){a_rhs.t};
   //  max(a,b) = (a+b+abs(a-b))/2
   real a = a_lhs->t, b = a_rhs->t;
-  a_out->t = (a + b + absValue(a - b)) / CAST(real, 2.0);
-	return a_out;
+  Real ret = { .t = (a + b + absValue(a - b)) / CAST(real, 2.0) };
+  return ret;
 }
 
-Real* REAL(min)(Real* a_out, Real const* a_lhs, Real const* a_rhs)
+Real REAL(min)(Real a_lhs, Real a_rhs)
 {
-	if (a_lhs->t <= a_rhs->t) {
-		a_out->t = a_lhs->t;
-	} else {
-		a_out->t = a_rhs->t;
-	}
-  return a_out;
+  Real ret;
+  if (a_lhs->t <= a_rhs->t) {
+    ret.t = a_lhs->t;
+  } else {
+    ret.t = a_rhs->t;
+  }
+  return ret;
+  // TODO is this faster?
   // min(a,b) = (a+b-abs(a-b))/2
 }
 
-/*
-static Real emp(void)
+static bool REAL(isLessEqual)(Real a_lhs, Real a_rhs) CONST
 {
-	Real ret;
-	ret.t = CAST(real, 0.0);
-	return ret;
+  return isLessEqual(a_lhs.t, a_rhs.t);
 }
-*/
 
-bool REAL(isEqual)(Real const* a_lhs, Real const* a_rhs)
+bool REAL(isEqual)(Real a_lhs, Real a_rhs)
 {
-  Real tmp[10], absTol, relTol;
-  init(&absTol, CAST(real, DBL_EPSILON));
-  init(&relTol,
-      CAST(real, DBL_EPSILON) * max(&tmp[0], absValue(&tmp[1], a_lhs), absValue(&tmp[2], a_rhs))->t);
+  Real absTol, relTol;
+  absTol.t = CAST(real, DBL_EPSILON));
+  relTol.t = CAST(real, DBL_EPSILON) * max(absValue(a_lhs), absValue(a_rhs));
 
-  return absValue(&tmp[3], sub(&tmp[4], a_lhs, a_rhs))->t <= max(&tmp[5], &absTol,
-             mul(&tmp[6], &relTol, max(&tmp[7], absValue(&tmp[8], a_lhs), absValue(&tmp[9], a_rhs))))
-                                                                 ->t;
+  return isLessEqual(absValue(sub(a_lhs, a_rhs)), max(absTol, mul(relTol, max(absValue(a_lhs), absValue(a_rhs)))));
 }

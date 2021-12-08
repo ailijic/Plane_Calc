@@ -8,11 +8,14 @@
 #include <math.h>
 #endif
 
+// TODO: I think we only need float.h for epsilon
+/*
 #ifdef __cplusplus
 #include <cfloat>
 #else
 #include <float.h>
 #endif
+*/
 
 /*
 #ifdef __cplusplus
@@ -37,3 +40,5 @@ static inline F80 absValue(F80 a_value) { return fabsl(a_value); }
 static inline int       absValue(int a_value)       { return   abs(a_value); }
 static inline long      absValue(long a_value)      { return  labs(a_value); }
 static inline long long absValue(long long a_value) { return llabs(a_value); }
+
+static inline
