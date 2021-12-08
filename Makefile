@@ -1,20 +1,20 @@
 TARGET_EXEC ?= a.out
 
 BUILD_DIR ?= ./build
-SRC_DIRS ?= ./src ./include
+SRC_DIRS ?= ./src
 
 SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
 
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
-INC_FLAGS := $(addprefix -I,include,$(INC_DIRS))
+INC_FLAGS := $(addprefix -I,$(INC_DIRS)) -I./include
 
 WARN_EXCLUDE := -Wno-c++98-compat-pedantic -Wno-newline-eof
 WARN_FLAGS := -Weverything -Werror $(WARN_EXCLUDE)
 
 CPPFLAGS ?= $(INC_FLAGS) $(WARN_FLAGS) -MMD -MP -Og -g3 -ggdb
-CXXFLAGS := -std=gnu++2a 
+CXXFLAGS := -std=c++2a 
 
 LDFLAGS := -lm
 
