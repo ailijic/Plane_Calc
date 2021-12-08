@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "i4/real.h"
+#include "generic.h"
 #include "time.h"
 #include "sfc.h"
 #include "lift_drag_ratio.h"
@@ -15,7 +16,7 @@ int main() {
 	init(&sfc, 0.0001111);
   init(&ld, 16.0);
 
-  F64 res = convert(WeightFraction.asReal(WeightFraction.loiter(&time, &sfc, &ld)));
+  F64 res = (F64)convert(asReal(loiter(time, sfc, ld)));
   printf("Loiter: %f\n", res);
 
   return EXIT_SUCCESS;

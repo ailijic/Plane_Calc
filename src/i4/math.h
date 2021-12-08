@@ -1,48 +1,29 @@
 #pragma once
 
+//#include <stdlib.h>
+#include <math.h>
+#include <tgmath.h>
 #include <stdlib.h>
-#include <cmath>
-#include <math.h>
-
-/*
-#ifdef __cplusplus
-#include <cmath>
-#else
-#include <math.h>
-#endif
-*/
-
-// TODO: I think we only need float.h for epsilon
-/*
-#ifdef __cplusplus
-#include <cfloat>
-#else
 #include <float.h>
-#endif
-*/
+#include "i4/define.h"
 
-/*
-#ifdef __cplusplus
-#define islessequal(m1, m2) std::islessequal(m1, m2)
-#endif
-*/
+//TODO: Why do I have to define these manually
+#define islessequal(m1, m2) ((m1) <= (m2))
 
-#ifdef __cplusplus
-#define MATH(m) m
-#else
-#define Math(m) CONCAT(Math_, m)
-#endif
+static inline F32 F32_e(F32 a_value) { return expf(a_value); }
+static inline F64 F64_e(F64 a_value) { return  exp(a_value); }
+static inline F80 F80_e(F80 a_value) { return expl(a_value); }
 
-static inline F32 e(F32 a_value) { return expf(a_value); }
-static inline F64 e(F64 a_value) { return  exp(a_value); }
-static inline F80 e(F80 a_value) { return expl(a_value); }
+static inline F32 F32_neg(F32 a_value) { return -a_value; }
+static inline F64 F64_neg(F64 a_value) { return -a_value; }
+static inline F80 F80_neg(F80 a_value) { return -a_value; }
 
-static inline F32 absValue(F32 a_value) { return fabsf(a_value); }
-static inline F64 absValue(F64 a_value) { return  fabs(a_value); }
-static inline F80 absValue(F80 a_value) { return fabsl(a_value); }
+static inline F32 F32_absValue(F32 a_value) { return fabsf(a_value); }
+static inline F64 F64_absValue(F64 a_value) { return  fabs(a_value); }
+static inline F80 F80_absValue(F80 a_value) { return fabsl(a_value); }
 
-static inline int       absValue(int a_value)       { return   abs(a_value); }
-static inline long      absValue(long a_value)      { return  labs(a_value); }
-static inline long long absValue(long long a_value) { return llabs(a_value); }
+static inline int            Int_absValue(int a_value)       { return   abs(a_value); }
+static inline long          Long_absValue(long a_value)      { return  labs(a_value); }
+static inline long long LongLong_absValue(long long a_value) { return llabs(a_value); }
 
-static inline bool isLessEqual(F32 a_lhs, F32 a_rhs) { return std::islessequal(a_lhs, a_rhs); }
+static inline bool F32_isLessEqual(F32 a_lhs, F32 a_rhs) { return islessequal(a_lhs, a_rhs); }

@@ -1,32 +1,29 @@
 #pragma once
 
-#include "i4/i4.h"
-
-#ifdef __cplusplus
-#define REAL(m) m
-#else
-#define REAL(m) CONCAT(Real_, m)
-#endif
+#include "i4/define.h"
+#include "i4/type.h"
+#include <stdbool.h>
 
 typedef struct Real {
   real t;
 } Real;
 
-Real* REAL(ctor)(Real* a_this);
-void  REAL(dtor)(Real* a_this);
-Real* REAL(init)(Real* a_this, real a_value);
+Real* Real_ctor(Real* a_this);
+void  Real_dtor(Real* a_this);
+Real* Real_init(Real* a_this, real a_value);
 
-real REAL(convert)(Real a_this) CONST;
+real Real_convert(Real a_this) CONST;
 
-Real REAL(absValue)(Real a_value) CONST;
-Real      REAL(neg)(Real a_value) CONST;
-Real        REAL(e)(Real a_value) CONST;  // e^a_value
+Real Real_absValue(Real a_value) CONST;
+Real      Real_neg(Real a_value) CONST;
+Real        Real_e(Real a_value) CONST;  // e^a_value
 
-bool  REAL(isEqual)(Real a_lhs, Real a_rhs)  CONST;
-Real      REAL(max)(Real a_lhs, Real a_rhs)  CONST;
-Real      REAL(min)(Real a_lhs, Real a_rhs)  CONST;
+bool     Real_isEqual(Real a_lhs, Real a_rhs) CONST;
+bool Real_isLessEqual(Real a_lhs, Real a_rhs) CONST;
+Real         Real_max(Real a_lhs, Real a_rhs) CONST;
+Real         Real_min(Real a_lhs, Real a_rhs) CONST;
 
-Real REAL(add)(Real a_lhs, Real a_rhs) CONST;
-Real REAL(sub)(Real a_lhs, Real a_rhs) CONST;
-Real REAL(mul)(Real a_lhs, Real a_rhs) CONST;
-Real REAL(div)(Real a_lhs, Real a_rhs) CONST;
+Real Real_add(Real a_lhs, Real a_rhs) CONST;
+Real Real_sub(Real a_lhs, Real a_rhs) CONST;
+Real Real_mul(Real a_lhs, Real a_rhs) CONST;
+Real Real_div(Real a_lhs, Real a_rhs) CONST;

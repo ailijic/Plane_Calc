@@ -11,15 +11,11 @@
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
+/*
 #ifdef __cplusplus
 #define CAST(m_type, m_expr) static_cast<m_type>(m_expr)
 #else
 #define CAST(m_type, m_expr) (m_type)( m_expr )
-#endif
-
-#ifdef NULL
-#undef NULL
-#define NULL nullptr
 #endif
 
 #ifdef __cplusplus
@@ -27,3 +23,4 @@
 #else
 #define PREFIX(prefix, root) CONCAT(prefix, root)
 #endif
+*/

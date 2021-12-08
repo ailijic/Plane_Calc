@@ -10,15 +10,16 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS)) -I./include
 
-WARN_EXCLUDE := -Wno-c++98-compat-pedantic -Wno-newline-eof -Wno-c99-extensions
-WARN_FLAGS := -Weverything $(WARN_EXCLUDE)
+WARN_EXCLUDE := -Wno-newline-eof
+WARN_FLAGS := -Weverything -Werror $(WARN_EXCLUDE)
 
-CPPFLAGS ?= $(INC_FLAGS) $(WARN_FLAGS) -MMD -MP -Og -g3 -ggdb
-CXXFLAGS := -std=c++2a 
+CPPFLAGS ?= $(INC_FLAGS) $(WARN_FLAGS) -MMD -MP -O0 -g3 -ggdb
+CFLAGS ?= #-std=gnu17
+CXXFLAGS := #-std=gnu++2a 
 
 LDFLAGS := -lm
 
-CC := clang++
+CC := clang
 CXX := clang++
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
@@ -32,12 +33,12 @@ $(BUILD_DIR)/%.s.o: %.s
 # c source
 $(BUILD_DIR)/%.c.o: %.c
 	$(MKDIR_P) $(dir $@)
-	$(CC) -xc++ -std=c++2a $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 # c++ source
 $(BUILD_DIR)/%.cpp.o: %.cpp
 	$(MKDIR_P) $(dir $@)
-	$(CXX) -xc++ $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 run: $(BUILD_DIR)/$(TARGET_EXEC)
 	./$(BUILD_DIR)/$(TARGET_EXEC)

@@ -1,15 +1,9 @@
 #pragma once
 
-#include "i4/i4.h"
+#include "i4/type.h"
 
-#ifdef __cplusplus
-#define MEM(m) m
-#else
-#define MEM(m) CONCAT(Mem_, m)
-#endif
+#define ssizeof(m) ((IntPtr)sizeof(m))
 
-#define ssizeof(m) CAST(IntPtr, sizeof(m))
+void* Mem_ctor(void* a_this, IntPtr a_size);
 
-void* MEM(ctor)(void* a_this, IntPtr a_size);
-
-void  MEM(dtor)(void* a_this);
+void  Mem_dtor(void* a_this);
