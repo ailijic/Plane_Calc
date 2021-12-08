@@ -17,9 +17,13 @@
 #define CAST(m_type, m_expr) (m_type)( m_expr )
 #endif
 
-#ifdef __cplusplus
 #ifdef NULL
 #undef NULL
-#endif
 #define NULL nullptr
+#endif
+
+#ifdef __cplusplus
+#define PREFIX(prefix, root) root
+#else
+#define PREFIX(prefix, root) CONCAT(prefix, root)
 #endif

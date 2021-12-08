@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-void* ctor(void const* a_this, IntPtr a_size){
+void* ctor(void* a_this, IntPtr a_size){
 	UNUSED(a_this);
 	assert(a_size >= 0);
 	void* vp = malloc(CAST(size_t, a_size));
