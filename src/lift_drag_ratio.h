@@ -5,3 +5,5 @@
 typedef struct LiftDragRatio {
 	Real t;
 } LiftDragRatio;
+
+static inline LiftDragRatio liftDragRatio()

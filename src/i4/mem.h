@@ -10,6 +10,6 @@
 
 #define ssizeof(m) CAST(IntPtr, sizeof(m))
 
-void* MEM(ctor)(void const* a_this, IntPtr a_size);
+void* MEM(ctor)(void* a_this, IntPtr a_size);
 
 void  MEM(dtor)(void* a_this);

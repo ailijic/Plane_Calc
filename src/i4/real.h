@@ -12,9 +12,9 @@ typedef struct Real {
   real t;
 } Real;
 
-Real REAL(ctor)(Real* a_this);
-void REAL(dtor)(Real* a_this);
-Real REAL(init)(Real* a_this, real a_value);
+Real* REAL(ctor)(Real* a_this);
+void  REAL(dtor)(Real* a_this);
+Real* REAL(init)(Real* a_this, real a_value);
 
 real REAL(convert)(Real a_this) CONST;
 

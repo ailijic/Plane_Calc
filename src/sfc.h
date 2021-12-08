@@ -6,4 +6,4 @@ typedef struct Sfc {
 	Real t; // (kg / s) / N
 } Sfc;
 
-Sfc lbsPerHourPerThrustLbs(Real r)
+Sfc lbsPerHourPerThrustLbs(Real r);

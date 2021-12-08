@@ -1,12 +1,16 @@
 #pragma once
 
 #include <stdlib.h>
+#include <cmath>
+#include <math.h>
 
+/*
 #ifdef __cplusplus
 #include <cmath>
 #else
 #include <math.h>
 #endif
+*/
 
 // TODO: I think we only need float.h for epsilon
 /*
@@ -41,4 +45,4 @@ static inline int       absValue(int a_value)       { return   abs(a_value); }
 static inline long      absValue(long a_value)      { return  labs(a_value); }
 static inline long long absValue(long long a_value) { return llabs(a_value); }
 
-static inline
+static inline bool isLessEqual(F32 a_lhs, F32 a_rhs) { return std::islessequal(a_lhs, a_rhs); }
