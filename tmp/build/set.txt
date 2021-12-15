@@ -1,0 +1,29 @@
+absValue`F32 `F32_absValue
+absValue`F64 `F64_absValue
+absValue`F80 `F80_absValue
+absValue`int `Int_absValue
+absValue`long `Long_absValue
+absValue`long long `LongLong_absValue
+absValue`Real `Real_absValue
+add`Real `Real_add
+convert`Real `Real_convert
+divy`Real `Real_divy
+e`F32 `F32_e
+e`F64 `F64_e
+e`F80 `F80_e
+e`Real `Real_e
+init`Real* `Real_init
+isEqual`Real `Real_isEqual
+isLessEqual`F32 `F32_isLessEqual
+isLessEqual`Real `Real_isLessEqual
+max`Real `Real_max
+min`Real `Real_min
+mul`Real `Real_mul
+neg`F32 `F32_neg
+neg`F64 `F64_neg
+neg`F80 `F80_neg
+neg`int `Int_neg
+neg`long `Long_neg
+neg`long long `LongLong_neg
+neg`Real `Real_neg
+sub`Real `Real_sub

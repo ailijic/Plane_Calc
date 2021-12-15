@@ -24,4 +24,4 @@ Real         Real_min(Real a_lhs, Real a_rhs) CONST;
 Real Real_add(Real a_lhs, Real a_rhs) CONST;
 Real Real_sub(Real a_lhs, Real a_rhs) CONST;
 Real Real_mul(Real a_lhs, Real a_rhs) CONST;
-Real Real_div(Real a_lhs, Real a_rhs) CONST;
+Real Real_divy(Real a_lhs, Real a_rhs) CONST;

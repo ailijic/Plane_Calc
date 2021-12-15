@@ -1,3 +1,4 @@
+
 #include "i4/real.h"
 #include "i4/math.h"
 #include <stddef.h>
@@ -35,7 +36,7 @@ Real Real_mul(Real a_lhs, Real a_rhs)
   return ret;
 }
 
-Real Real_div(Real a_lhs, Real a_rhs)
+Real Real_divy(Real a_lhs, Real a_rhs)
 {
   Real ret = { .t = a_lhs.t / a_rhs.t };
   return ret;

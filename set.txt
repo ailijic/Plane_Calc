@@ -1,0 +1,19 @@
+absValue	int	Int_absValue
+absValue	long	Long_absValue
+absValue	long long	LongLong_absValue
+absValue	Real	Real_absValue
+add	Real	Real_add
+convert	Real	Real_convert
+div	Real	Real_div
+e	Real	Real_e
+init	Real*	Real_init
+isEqual	Real	Real_isEqual
+isLessEqual	Real	Real_isLessEqual
+max	Real	Real_max
+min	Real	Real_min
+mul	Real	Real_mul
+neg	int	Int_neg
+neg	long long	LongLong_neg
+neg	long	Long_neg
+neg	Real	Real_neg
+sub	Real	Real_sub

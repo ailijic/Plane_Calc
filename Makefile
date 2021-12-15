@@ -1,7 +1,8 @@
 TARGET_EXEC ?= a.out
 
 BUILD_DIR ?= ./build
-SRC_DIRS ?= ./src
+SRC_DIRS ?= ./src ./test
+TEST_DIR ?= ./test
 
 SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -19,8 +20,8 @@ CXXFLAGS := #-std=gnu++2a
 
 LDFLAGS := -lm
 
-CC := clang
-CXX := clang++
+CC := clang-8
+CXX := clang++-8
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
