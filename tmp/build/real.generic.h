@@ -5,69 +5,69 @@
 
 
 #define absValue(m, ...) _Generic((m), \
-	GEN_LINE(absValue, F32 , F32_absValue), \
-	GEN_LINE(absValue, F64 , F64_absValue), \
-	GEN_LINE(absValue, F80 , F80_absValue), \
-	GEN_LINE(absValue, int , Int_absValue), \
-	GEN_LINE(absValue, long , Long_absValue), \
-	GEN_LINE(absValue, long long , LongLong_absValue), \
-	GEN_LINE(absValue, Real , Real_absValue) \
+	GEN_LINE(absValue, 1, F32 , F32_absValue), \
+	GEN_LINE(absValue, 1, F64 , F64_absValue), \
+	GEN_LINE(absValue, 1, F80 , F80_absValue), \
+	GEN_LINE(absValue, 1, int , Int_absValue), \
+	GEN_LINE(absValue, 1, long , Long_absValue), \
+	GEN_LINE(absValue, 1, long long , LongLong_absValue), \
+	GEN_LINE(absValue, 1, Real , Real_absValue) \
 )((m))
 
 #define add(m, ...) _Generic((m), \
-	GEN_LINE(add, Real , Real_add) \
+	GEN_LINE(add, 2, Real , Real_add) \
 )((m))
 
 #define convert(m, ...) _Generic((m), \
-	GEN_LINE(convert, Real , Real_convert) \
+	GEN_LINE(convert, 1, Real , Real_convert) \
 )((m))
 
 #define divy(m, ...) _Generic((m), \
-	GEN_LINE(divy, Real , Real_divy) \
+	GEN_LINE(divy, 2, Real , Real_divy) \
 )((m))
 
 #define e(m, ...) _Generic((m), \
-	GEN_LINE(e, F32 , F32_e), \
-	GEN_LINE(e, F64 , F64_e), \
-	GEN_LINE(e, F80 , F80_e), \
-	GEN_LINE(e, Real , Real_e) \
+	GEN_LINE(e, 1, F32 , F32_e), \
+	GEN_LINE(e, 1, F64 , F64_e), \
+	GEN_LINE(e, 1, F80 , F80_e), \
+	GEN_LINE(e, 1, Real , Real_e) \
 )((m))
 
 #define init(m, ...) _Generic((m), \
-	GEN_LINE(init, Real* , Real_init) \
+	GEN_LINE(init, 2, Real* , Real_init) \
 )((m))
 
 #define isEqual(m, ...) _Generic((m), \
-	GEN_LINE(isEqual, Real , Real_isEqual) \
+	GEN_LINE(isEqual, 2, Real , Real_isEqual) \
 )((m))
 
 #define isLessEqual(m, ...) _Generic((m), \
-	GEN_LINE(isLessEqual, F32 , F32_isLessEqual), \
-	GEN_LINE(isLessEqual, Real , Real_isLessEqual) \
+	GEN_LINE(isLessEqual, 2, F32 , F32_isLessEqual), \
+	GEN_LINE(isLessEqual, 2, Real , Real_isLessEqual) \
 )((m))
 
 #define max(m, ...) _Generic((m), \
-	GEN_LINE(max, Real , Real_max) \
+	GEN_LINE(max, 2, Real , Real_max) \
 )((m))
 
 #define min(m, ...) _Generic((m), \
-	GEN_LINE(min, Real , Real_min) \
+	GEN_LINE(min, 2, Real , Real_min) \
 )((m))
 
 #define mul(m, ...) _Generic((m), \
-	GEN_LINE(mul, Real , Real_mul) \
+	GEN_LINE(mul, 2, Real , Real_mul) \
 )((m))
 
 #define neg(m, ...) _Generic((m), \
-	GEN_LINE(neg, F32 , F32_neg), \
-	GEN_LINE(neg, F64 , F64_neg), \
-	GEN_LINE(neg, F80 , F80_neg), \
-	GEN_LINE(neg, int , Int_neg), \
-	GEN_LINE(neg, long , Long_neg), \
-	GEN_LINE(neg, long long , LongLong_neg), \
-	GEN_LINE(neg, Real , Real_neg) \
+	GEN_LINE(neg, 1, F32 , F32_neg), \
+	GEN_LINE(neg, 1, F64 , F64_neg), \
+	GEN_LINE(neg, 1, F80 , F80_neg), \
+	GEN_LINE(neg, 1, int , Int_neg), \
+	GEN_LINE(neg, 1, long , Long_neg), \
+	GEN_LINE(neg, 1, long long , LongLong_neg), \
+	GEN_LINE(neg, 1, Real , Real_neg) \
 )((m))
 
 #define sub(m, ...) _Generic((m), \
-	GEN_LINE(sub, Real , Real_sub) \
+	GEN_LINE(sub, 2, Real , Real_sub) \
 )(m, __VA_ARGS__)
