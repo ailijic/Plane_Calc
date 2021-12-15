@@ -2,14 +2,18 @@
 set -x #echo on
 
 rm -f real.generic.h
+rm -f real.c.i
 
 clang -O0 -g3 -ggdb -Weverything -Werror -Wno-newline-eof -c gengen.c;
 clang -O0 -g3 -ggdb -Weverything -Werror -Wno-newline-eof -o gengen gengen.o;
 
-clang-cpp -I .. -I . ../i4/real.c -o real.i;
+for file in "$@"
+do
+	clang-cpp -I .. -I . "${file}" -o ./"${file}".i;
 
 # lines.txt - get the relevant lines
-grep -oP '[A-Z][a-z0-9][a-zA-Z0-9]*_[a-z][a-zA-Z0-9]*[ \t\v]*\([ a-zA-Z0-9_*]+[,|\)]' real.i \
+grep -oP '[A-Z][a-z0-9][a-zA-Z0-9]*_[a-z][a-zA-Z0-9]*[ \t\v]*\([ a-zA-Z0-9_*]+[,|\)]' \
+< ./"${file}".i \
 | sort --field-separator=_ --key=2 -u \
 > lines.txt;
 
@@ -42,6 +46,7 @@ awk  -F '`' '{printf("GEN_LINE(%s, %s, %s, %s)\n", $1, $2, $3, $4)}' set.txt \
 # create the generic *.h file
 ./gengen \
 < list.txt \
-> real.generic.h;
+> ./"${file}".generic.h;
 
-clang -O0 -g3 -ggdb -I.. -include real.generic.h -Weverything -Werror -Wno-newline-eof -c ../i4/real.c;
+clang -O0 -g3 -ggdb -I.. -include ./"${file}".generic.h -Weverything -Werror -Wno-newline-eof -c "${file}";
+done
