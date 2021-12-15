@@ -40,8 +40,8 @@ awk  -F '`' '{printf("GEN_LINE(%s, %s, %s, %s)\n", $1, $2, $3, $4)}' set.txt \
 > list.txt;
 
 # create the generic *.h file
-cat list.txt \
-| ./gengen \
+./gengen \
+< list.txt \
 > real.generic.h;
 
-# clang -O0 -g3 -ggdb -I.. -include real.generic.h -Weverything -Werror -Wno-newline-eof -c ../i4/real.c;
+clang -O0 -g3 -ggdb -I.. -include real.generic.h -Weverything -Werror -Wno-newline-eof -c ../i4/real.c;
