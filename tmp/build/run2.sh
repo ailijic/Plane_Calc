@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -x #echo on
 
-##TODO: remove uses of cat command
-
 rm -f real.generic.h
 rm -f real.c.i
 
