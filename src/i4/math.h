@@ -1,11 +1,14 @@
 #pragma once
 
 //#include <stdlib.h>
-#include <math.h>
-#include <tgmath.h>
 #include <stdlib.h>
 #include <float.h>
+#include <stdbool.h>
 #include "i4/define.h"
+#include "i4/type.h"
+#include <math.h>
+//#include <tgmath.h>
+
 
 //TODO: Why do I have to define these manually
 #define islessequal(m1, m2) ((m1) <= (m2))

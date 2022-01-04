@@ -11,19 +11,24 @@ INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS)) -I./include
 
 WARN_EXCLUDE := -Wno-newline-eof
-WARN_FLAGS := -Weverything -Werror $(WARN_EXCLUDE)
+#WARN_FLAGS := -Weverything -Werror $(WARN_EXCLUDE)
+WARN_FLAGS := -Werror $(WARN_EXCLUDE)
 
 CPPFLAGS ?= $(INC_FLAGS) $(WARN_FLAGS) -MMD -MP -O0 -g3 -ggdb
 CFLAGS ?= #-std=gnu17
-CXXFLAGS := #-std=gnu++2a 
+CXXFLAGS := #-std=gnu++2a
 
 LDFLAGS := -lm
 
-CC := clang
-CXX := clang++
+#CC := clang
+#CXX := clang++
+
+CC := gcc
+CXX := g++
+LD := ld
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+	$(LD) $(OBJS) -o $@ $(LDFLAGS)
 
 # assembly
 $(BUILD_DIR)/%.s.o: %.s
