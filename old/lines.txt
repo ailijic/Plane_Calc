@@ -1,0 +1,29 @@
+F32_absValue(F32 a_value)
+F64_absValue(F64 a_value)
+F80_absValue(F80 a_value)
+Int_absValue(int a_value)
+Long_absValue(long a_value)
+LongLong_absValue(long long a_value)
+Real_absValue(Real a_value)
+Real_add(Real a_lhs,
+Real_convert(Real a_this)
+Real_div(Real a_lhs,
+F32_e(F32 a_value)
+F64_e(F64 a_value)
+F80_e(F80 a_value)
+Real_e(Real a_value)
+Real_init(Real* a_this,
+Real_isEqual(Real a_lhs,
+F32_isLessEqual(F32 a_lhs,
+Real_isLessEqual(Real a_lhs,
+Real_max(Real a_lhs,
+Real_min(Real a_lhs,
+Real_mul(Real a_lhs,
+F32_neg(F32 a_value)
+F64_neg(F64 a_value)
+F80_neg(F80 a_value)
+Int_neg(int a_value)
+Long_neg(long a_value)
+LongLong_neg(long long a_value)
+Real_neg(Real a_value)
+Real_sub(Real a_lhs,
