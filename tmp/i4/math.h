@@ -31,6 +31,7 @@ static inline long long LongLong_absValue(long long a_value) { return llabs(a_va
 
 static inline bool F32_isLessEqual(F32 a_lhs, F32 a_rhs) { return islessequal(a_lhs, a_rhs); }
 
+/*
 #define e(m)        \
 	_Generic((m),     \
 		F32 : F32_e,    \
@@ -63,3 +64,4 @@ static inline bool F32_isLessEqual(F32 a_lhs, F32 a_rhs) { return islessequal(a_
 		F32:  F32_isLessEqual,  \
 		Real: Real_isLessEqual \
 	)(m, __VA_ARGS__)
+*/

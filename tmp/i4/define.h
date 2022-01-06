@@ -11,8 +11,6 @@
 
 #define UNUSED(expr) do { (void)(expr); } while (0)
 
-#define GENERIC CONCAT(__FILE__, .generic.h)
-
 /*
 #ifdef __cplusplus
 #define CAST(m_type, m_expr) static_cast<m_type>(m_expr)

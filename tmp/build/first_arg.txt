@@ -1,0 +1,29 @@
+F32 
+F64 
+F80 
+int 
+long 
+long long 
+Real 
+Real 
+Real 
+Real 
+F32 
+F64 
+F80 
+Real 
+Real* 
+Real 
+F32 
+Real 
+Real 
+Real 
+Real 
+F32 
+F64 
+F80 
+int 
+long 
+long long 
+Real 
+Real 

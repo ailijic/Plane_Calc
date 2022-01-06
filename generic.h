@@ -44,7 +44,7 @@
 		Real: Real_mul \
 	)(m, __VA_ARGS__)
 
-#define div(m, ...) \
+#define divide(m, ...) \
 	_Generic((m),     \
 		Real: Real_div \
 	)(m, __VA_ARGS__)
